@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>
+            #slider {
+  position: relative;
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.show {
+  opacity: 1;
+}
+        </style>
+    </head>
+    <body>
+        <div id="slider">
+            <img src="./img/image1.jpeg" class="slide" alt="Image 1">
+            <img src="./img/image2.jpg" class="slide" alt="Image 2">
+            <img src="./img/image3.jpeg" class="slide" alt="Image 3">
+          </div>
+
+          <script>
+let slider = document.getElementById("slider");
+let slides = slider.getElementsByClassName("slide");
+let currentSlide = 0;
+
+function showSlide() {
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].classList.remove("show");
+  }
+  slides[currentSlide].classList.add("show");
+}
+
+showSlide();
+
+setInterval(function() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide();
+}, 2000);
+
+          </script>
+    </body>
+</html>
+
